@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+/* ========= gradient spot light */
+.spotLight {
+  background: radial-gradient(circle at 90% 10%, #462a5a, transparent 10%),
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(137, 17, 218, 0.462),
+      transparent 60%
+    );
+}
+/* ------------ End gradient spot light */

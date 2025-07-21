@@ -43,7 +43,7 @@ All colors MUST be HSL.
     --gradient-from: 280 100% 70%;
     --gradient-via: 260 100% 75%;
     --gradient-to: 240 100% 80%;
-    
+
     /* Spot gradients */
     --spot-primary: 280 100% 70%;
     --spot-secondary: 260 100% 75%;
@@ -110,6 +110,22 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground overflow-x-hidden;
   }
+  body::after {
+    content: "";
+    position: absolute;
+    overflow: visible;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 200vh;
+    background: radial-gradient(circle at 94% 40%, #b317e263, transparent 20%),
+      radial-gradient(
+        circle at -4% 18%,
+        rgba(138, 17, 218, 0.432),
+        rgba(158, 9, 158, 0.308),
+        transparent 10%
+      );
+  }
 }
 
 @layer utilities {
@@ -128,11 +144,16 @@ All colors MUST be HSL.
   }
 
   .gradient-border::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     padding: 2px;
-    background: linear-gradient(45deg, hsl(var(--gradient-from)), hsl(var(--gradient-via)), hsl(var(--gradient-to)));
+    background: linear-gradient(
+      45deg,
+      hsl(var(--gradient-from)),
+      hsl(var(--gradient-via)),
+      hsl(var(--gradient-to))
+    );
     border-radius: inherit;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: xor;
@@ -146,9 +167,8 @@ All colors MUST be HSL.
 
   /* Glow effects */
   .glow {
-    box-shadow: 0 0 20px hsl(var(--glow) / 0.3), 
-                0 0 40px hsl(var(--glow) / 0.2),
-                0 0 80px hsl(var(--glow) / 0.1);
+    box-shadow: 0 0 20px hsl(var(--glow) / 0.3), 0 0 40px hsl(var(--glow) / 0.2),
+      0 0 80px hsl(var(--glow) / 0.1);
   }
 
   /* Marquee animation */
@@ -158,7 +178,11 @@ All colors MUST be HSL.
 
   /* Floating spots */
   .spot-1 {
-    background: radial-gradient(circle, hsl(var(--spot-primary) / 0.15) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      hsl(var(--spot-primary) / 0.15) 0%,
+      transparent 70%
+    );
     position: absolute;
     width: 400px;
     height: 400px;
@@ -170,7 +194,11 @@ All colors MUST be HSL.
   }
 
   .spot-2 {
-    background: radial-gradient(circle, hsl(var(--spot-secondary) / 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      hsl(var(--spot-secondary) / 0.1) 0%,
+      transparent 70%
+    );
     position: absolute;
     width: 300px;
     height: 300px;
@@ -182,7 +210,11 @@ All colors MUST be HSL.
   }
 
   .spot-3 {
-    background: radial-gradient(circle, hsl(var(--spot-accent) / 0.12) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      hsl(var(--spot-accent) / 0.12) 0%,
+      transparent 70%
+    );
     position: absolute;
     width: 500px;
     height: 500px;
@@ -195,11 +227,22 @@ All colors MUST be HSL.
 }
 
 @keyframes gradient-shift {
-  0%, 100% {
-    background: linear-gradient(45deg, hsl(var(--gradient-from)), hsl(var(--gradient-via)), hsl(var(--gradient-to)));
+  0%,
+  100% {
+    background: linear-gradient(
+      45deg,
+      hsl(var(--gradient-from)),
+      hsl(var(--gradient-via)),
+      hsl(var(--gradient-to))
+    );
   }
   50% {
-    background: linear-gradient(45deg, hsl(var(--gradient-to)), hsl(var(--gradient-from)), hsl(var(--gradient-via)));
+    background: linear-gradient(
+      45deg,
+      hsl(var(--gradient-to)),
+      hsl(var(--gradient-from)),
+      hsl(var(--gradient-via))
+    );
   }
 }
 
@@ -213,7 +256,8 @@ All colors MUST be HSL.
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) scale(1);
   }
   50% {

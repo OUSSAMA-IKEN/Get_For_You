@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ShoppingCart, Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ShoppingCart, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,26 +12,26 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { label: 'Accueil', href: '#home' },
-    { label: 'Produit', href: '#product' },
-    { label: 'Avis', href: '#reviews' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Contact', href: '#contact' },
+    { label: "Accueil", href: "#home" },
+    { label: "Produit", href: "#product" },
+    { label: "Avis", href: "#reviews" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Contact", href: "#contact" }
   ];
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'glass backdrop-blur-xl border-b border-border/50' 
-          : 'bg-transparent'
+      className={`fixed top-4 left-0 glass backdrop-blur-xl w-[80%] mx-auto right-0 z-50 rounded-[2rem] p-3 transition-all duration-700 ${
+        isScrolled
+          ? "glass backdrop-blur-xl border-b border-border/50 md:rounded-full  top-12 w-[70%] mx-auto transition-all duration-400 "
+          : "bg-transparent "
       }`}
     >
       <div className="container mx-auto px-4">
@@ -51,7 +51,7 @@ const Navbar = () => {
                 key={item.label}
                 href={item.href}
                 whileHover={{ y: -2 }}
-                className="text-foreground/80 hover:text-primary transition-colors duration-200 relative group"
+                className="text-foreground/80 hover:text-primary text-[18px] font-[400] transition-colors duration-200 relative group"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -74,7 +74,11 @@ const Navbar = () => {
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </Button>
         </div>
 
@@ -83,7 +87,7 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{
             opacity: isMobileMenuOpen ? 1 : 0,
-            height: isMobileMenuOpen ? 'auto' : 0,
+            height: isMobileMenuOpen ? "auto" : 0
           }}
           className="md:hidden overflow-hidden"
         >
@@ -92,7 +96,7 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="block text-foreground/80 hover:text-primary transition-colors duration-200"
+                className="block text-foreground/80 hover:text-primary  transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
