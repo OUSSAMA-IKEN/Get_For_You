@@ -1,16 +1,28 @@
-import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 const ProductDescription = () => {
+
+  // const features = [
+  //   "Audio haute résolution avec drivers de 40mm",
+  //   "Réduction de bruit active adaptative",
+  //   "Autonomie de 30 heures avec étui de charge",
+  //   "Connexion Bluetooth 5.3 ultra-stable",
+  //   "Résistant à l'eau IPX6",
+  //   "Commandes tactiles intuitives",
+  //   "Compatible avec tous les appareils",
+  //   "Garantie 2 ans incluse"
+  // ];
+  
   const features = [
-    'Audio haute résolution avec drivers de 40mm',
-    'Réduction de bruit active adaptative',
-    'Autonomie de 30 heures avec étui de charge',
-    'Connexion Bluetooth 5.3 ultra-stable',
-    'Résistant à l\'eau IPX6',
-    'Commandes tactiles intuitives',
-    'Compatible avec tous les appareils',
-    'Garantie 2 ans incluse'
+    "🔋 Rechargeable , no batteries needed, just plug and use",
+    "🧼 Easy to clean , removable tank cleans in seconds",
+    "👕 Gentle on fabrics , removes lint without damage",
+    "🔘 One-button operation , press to turn on/off effortlessly",
+    "⏱️ Up to 30 hours of continuous use on a single charge",
+    "✈️ Travel-friendly , compact and lightweight design",
+    "✨ Sleek and modern look that fits any space",
+    "🛡️ 2-year warranty included for peace of mind"
   ];
 
   const containerVariants = {
@@ -31,7 +43,7 @@ const ProductDescription = () => {
   return (
     <section className="py-20 relative">
       <div className="spot-3" />
-      
+
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -41,10 +53,11 @@ const ProductDescription = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Caractéristiques <span className="text-primary">Premium</span>
+            Exclusive <span className="text-primary">Features</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Chaque détail a été pensé pour vous offrir une expérience audio exceptionnelle
+            Every detail has been carefully crafted to offer an exceptional
+            fabric care experience.
           </p>
         </motion.div>
 
@@ -79,12 +92,14 @@ const ProductDescription = () => {
           >
             <div className="glass rounded-3xl p-8 text-center">
               <div className="text-6xl font-bold text-primary mb-4">30h</div>
-              <div className="text-xl font-semibold mb-2">Autonomie totale</div>
+              <div className="text-xl font-semibold mb-2">
+                Continuous Operation
+              </div>
               <div className="text-muted-foreground">
-                Profitez de votre musique toute la journée sans interruption
+                Designed for long-lasting performance and reliable fabric care.{" "}
               </div>
             </div>
-            
+
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}

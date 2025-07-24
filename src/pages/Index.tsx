@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import ProductHero from "@/components/ProductHero";
 import ProductDescription from "@/components/ProductDescription";
-import MarqueeBanner from "@/components/MarqueeBanner";
+import { MarqueeDemo } from "@/components/MarqueeBanner";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
@@ -14,7 +14,7 @@ const Index = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-backgroud text-foreground relative ">
+    <div className="min-h-screen  bg-backgroud text-foreground relative ">
       {/* Background spots */}
       <div className="spot-1" />
       <div className="spot-2" />
@@ -27,7 +27,7 @@ const Index = () => {
           <ProductHero onOrderClick={() => setIsOrderModalOpen(true)} />
         </section>
 
-        <MarqueeBanner />
+        <MarqueeDemo />
 
         <ProductDescription />
 

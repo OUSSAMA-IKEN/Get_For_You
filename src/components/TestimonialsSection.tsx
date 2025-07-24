@@ -1,28 +1,55 @@
-import { motion } from 'framer-motion';
-import { Star, Quote } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Star, Quote } from "lucide-react";
 
 const TestimonialsSection = () => {
+  // const testimonials = [
+  //   {
+  //     name: "Marie Dubois",
+  //     role: "Audiophile",
+  //     comment: "La qualité sonore est absolument exceptionnelle. Ces écouteurs ont transformé ma façon d'écouter la musique.",
+  //     rating: 5,
+  //     avatar: "MD"
+  //   },
+  //   {
+  //     name: "Thomas Martin",
+  //     role: "Producteur musical",
+  //     comment: "En tant que professionnel, j'ai testé beaucoup d'écouteurs. Ceux-ci offrent une précision remarquable dans toutes les fréquences.",
+  //     rating: 5,
+  //     avatar: "TM"
+  //   },
+  //   {
+  //     name: "Sophie Laurent",
+  //     role: "Utilisatrice quotidienne",
+  //     comment: "Confortables même après plusieurs heures d'utilisation. La réduction de bruit est parfaite pour les transports.",
+  //     rating: 5,
+  //     avatar: "SL"
+  //   }
+  // ];
+
   const testimonials = [
     {
-      name: "Marie Dubois",
-      role: "Audiophile",
-      comment: "La qualité sonore est absolument exceptionnelle. Ces écouteurs ont transformé ma façon d'écouter la musique.",
+      name: "Souad",
+      role: "👩‍🦰 from Marrakech",
+      comment:
+        "The product is more than amazing! It made me go back to wearing clothes I had forgotten about because of the lint 💖",
       rating: 5,
-      avatar: "MD"
+      avatar: "S"
     },
     {
-      name: "Thomas Martin",
-      role: "Producteur musical",
-      comment: "En tant que professionnel, j'ai testé beaucoup d'écouteurs. Ceux-ci offrent une précision remarquable dans toutes les fréquences.",
-      rating: 5,
-      avatar: "TM"
+      name: "Leila",
+      role: "👩‍💼 from Casablanca",
+      comment:
+        "It arrived in just 2 days, and the delivery was free! Excellent service 👏",
+      rating: 4,
+      avatar: "L"
     },
     {
-      name: "Sophie Laurent",
-      role: "Utilisatrice quotidienne",
-      comment: "Confortables même après plusieurs heures d'utilisation. La réduction de bruit est parfaite pour les transports.",
+      name: "Nadia",
+      role: "👩 from Tangier",
+      comment:
+        "I used it on an old jacket and it looked new again! I recommend it to everyone without hesitation ✅",
       rating: 5,
-      avatar: "SL"
+      avatar: "N"
     }
   ];
 
@@ -38,8 +65,8 @@ const TestimonialsSection = () => {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6 }
     }
@@ -56,10 +83,10 @@ const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Ce que disent nos <span className="text-primary">clients</span>
+            Customer <span className="text-primary">Testimonials</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Des milliers de clients satisfaits à travers le monde
+            Join thousands of happy customers worldwide
           </p>
         </motion.div>
 
@@ -102,13 +129,19 @@ const TestimonialsSection = () => {
               </p>
 
               {/* User info */}
-              <div className="flex items-center space-x-3">
+              <div
+                className={`flex items-center space-x-3 ${
+                  testimonial.avatar === "L" ? "mt-[50px]" : ""
+                }`}
+              >
                 <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-primary-foreground font-bold">
                   {testimonial.avatar}
                 </div>
                 <div>
                   <div className="font-semibold">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  <div className="text-sm text-muted-foreground">
+                    {testimonial.role}
+                  </div>
                 </div>
               </div>
 

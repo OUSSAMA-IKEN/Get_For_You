@@ -114,11 +114,12 @@ All colors MUST be HSL.
     content: "";
     position: absolute;
     overflow: visible;
+    z-index: -1;
     left: 0;
     top: 0;
     width: 100%;
     height: 200vh;
-    background: radial-gradient(circle at 94% 40%, #b317e263, transparent 20%),
+    background: radial-gradient(circle at 99% 40%, #b317e252, transparent 18%),
       radial-gradient(
         circle at -4% 18%,
         rgba(138, 17, 218, 0.432),
@@ -212,7 +213,7 @@ All colors MUST be HSL.
   .spot-3 {
     background: radial-gradient(
       circle,
-      hsl(var(--spot-accent) / 0.12) 0%,
+      hsl(var(--spot-accent) / 0.2) 0%,
       transparent 70%
     );
     position: absolute;
@@ -223,6 +224,30 @@ All colors MUST be HSL.
     left: 20%;
     z-index: -1;
     animation: float 10s ease-in-out infinite;
+  }
+
+  /* Add this to your global CSS file */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes marquee-vertical {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee var(--duration, 40s) linear infinite;
+  }
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration, 40s) linear infinite;
   }
 }
 
@@ -263,4 +288,69 @@ All colors MUST be HSL.
   50% {
     transform: translateY(-20px) scale(1.05);
   }
+}
+
+.button:hover {
+  background: linear-gradient(
+    45deg,
+    hsl(var(--gradient-from)),
+    hsl(var(--gradient-via)),
+    hsl(var(--gradient-to))
+  );
+  box-shadow: 0 0 20px hsl(var(--glow) / 0.3), 0 0 40px hsl(var(--glow) / 0.2),
+    0 0 80px hsl(var(--glow) / 0.1);
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  border-radius: 2rem;
+}
+
+.podAnimation {
+  animation: floatPod 4.9s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px #d653f09a);
+}
+@keyframes floatPod {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+.shadow {
+  width: 8rem;
+  height: 3rem;
+  clip-path: ellipse();
+  transform: rotateX(50deg);
+  background: radial-gradient(
+    rgba(255, 255, 255, 0.685),
+    rgba(255, 255, 255, 0.356),
+    transparent 70%
+  );
+  animation: opacityShadow 4.9s ease-in-out infinite;
+}
+@keyframes opacityShadow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.add::after {
+  content: "";
+  display: inline-block;
+  margin-top: 10px;
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--gradient-from)),
+    hsl(var(--gradient-via)),
+    hsl(var(--gradient-to))
+  );
+  margin-right: .5rem;
+  width: 0.4rem;
+  height: 3rem;
+  border-radius: 1rem;
 }
