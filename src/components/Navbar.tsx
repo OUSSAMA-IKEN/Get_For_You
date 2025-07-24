@@ -105,7 +105,7 @@ const Navbar = () => {
             opacity: isMobileMenuOpen ? 1 : 0,
             height: isMobileMenuOpen ? "auto" : 0
           }}
-          className="md:hidden overflow-hidden"
+          className="lg:hidden overflow-hidden"
         >
           <div className="py-4 space-y-4">
             {navItems.map((item) => (
