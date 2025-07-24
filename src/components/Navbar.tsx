@@ -24,7 +24,10 @@ const Navbar = () => {
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" }
   ];
-
+// sdfjds
+// sdfjds
+// sdfjds
+// sdfjds
   return (
     <motion.nav
       initial={{ y: -100 }}
