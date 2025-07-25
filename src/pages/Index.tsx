@@ -14,7 +14,7 @@ const Index = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen  bg-backgroud text-foreground relative ">
+    <div className="min-h-screen  bg-backgroud text-foreground relative  ">
       {/* Background spots */}
       <div className="spot-1" />
       <div className="spot-2" />

@@ -24,7 +24,7 @@ const ProductHero = ({ onOrderClick }: ProductHeroProps) => {
       <div className="spot-1" />
       <div className="spot-2" />
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="container  mx-auto px-4 py-20 ">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Product Image */}
           <motion.div
@@ -33,9 +33,9 @@ const ProductHero = ({ onOrderClick }: ProductHeroProps) => {
             transition={{ duration: 0.8 }}
             className="relative w-full h-auto  "
           >
-            <div className="w-full h-auto flex justify-center relative lg:right-16 ">
+            <div className="w-full h-auto flex  justify-center relative lg:right-16 ">
               <div className="flex flex-col items-center ">
-                <div className="flex justify-center rotate-12">
+                <div className="flex  justify-center rotate-12">
                   <img
                     src={productImage}
                     alt="SoundWave Pro Headphones"

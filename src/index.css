@@ -51,6 +51,7 @@ All colors MUST be HSL.
 
     /* Premium effects */
     --glow: 280 100% 70%;
+    --glasss: 210 40% 1% / 0.09;
     --glass: 210 40% 98% / 0.05;
     --glass-border: 210 40% 98% / 0.1;
 
@@ -133,6 +134,12 @@ All colors MUST be HSL.
   /* Glass effects */
   .glass {
     background: hsl(var(--glass));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glasss {
+    background: hsl(var(--glasss));
     backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--glass-border));
   }
@@ -306,7 +313,7 @@ All colors MUST be HSL.
 
 .podAnimation {
   animation: floatPod 4.9s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px #d653f09a);
+  filter: drop-shadow(0 0 10px #eae6eb59);
 }
 @keyframes floatPod {
   0%,
@@ -349,7 +356,7 @@ All colors MUST be HSL.
     hsl(var(--gradient-via)),
     hsl(var(--gradient-to))
   );
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   width: 0.4rem;
   height: 3rem;
   border-radius: 1rem;

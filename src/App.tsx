@@ -8,8 +8,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Test from "./pages/Test";
 
-
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -17,7 +15,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/Get_For_You">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/test" element={<Test />} />

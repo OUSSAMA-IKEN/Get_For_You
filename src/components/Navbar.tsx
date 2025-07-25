@@ -24,19 +24,16 @@ const Navbar = () => {
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" }
   ];
-// sdfjds
-// sdfjds
-// sdfjds
-// sdfjds
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed left-0 right-0 z-50 mx-auto p-3 transition-all duration-700
-    glass backdrop-blur-xl rounded-[2rem]
+    glasss lg:glass backdrop-blur-xl rounded-[2rem]
     ${
       isScrolled
-        ? "border-b border-border/50 md:rounded-full top-16 w-[65%]"
+        ? "border-b border-border/50  top-16 w-[65%]"
         : "bg-transparent  top-3 w-[70%]"
     }`}
     >
@@ -91,9 +88,9 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
+              <X className="h-5  w-5" />
             ) : (
-              <Menu className="h-5 w-5" />
+              <Menu className="h-5  w-5" />
             )}
           </Button>
         </div>
@@ -107,12 +104,12 @@ const Navbar = () => {
           }}
           className="lg:hidden overflow-hidden"
         >
-          <div className="py-4 space-y-4">
+          <div className="py-4 space-y-4 ">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="block text-foreground/80 hover:text-primary  transition-colors duration-200"
+                className="block text-white hover:text-primary  transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
