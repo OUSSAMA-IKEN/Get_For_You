@@ -1,38 +1,44 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
+import img1 from "@/assets/images/spr-product-conair-portable-fabri-shaver-cls1-hwortock-005-ab3e248a10244878a158f911721c6350.webp";
+import img2 from "@/assets/images/12.jpeg";
+import img3 from "@/assets/images/22.jpg";
+import img4 from "@/assets/images/55.jpg";
+import img5 from "@/assets/images/8.webp";
+import img6 from "@/assets/images/img-0159-jpeg-648a310b60cf5.avif";
 
-// Update: Product showcase cards using images from public/Images
+// Update: Product showcase cards using images from assets/images
 const products = [
   {
     name: "Portable Fabric Shaver",
     description:
       "Easily remove lint and fuzz from your clothes. Compact and powerful.",
-    img: "/Images/spr-product-conair-portable-fabri-shaver-cls1-hwortock-005-ab3e248a10244878a158f911721c6350.webp"
+    img: img1
   },
   {
     name: "Classic Style",
     description: "Timeless design for everyday comfort and elegance.",
-    img: "/Images/12.jpeg"
+    img: img2
   },
   {
     name: "Modern Look",
     description: "Upgrade your wardrobe with this trendy piece.",
-    img: "/Images/22.jpg"
+    img: img3
   },
   {
     name: "Premium Quality",
     description: "Crafted with care for long-lasting wear.",
-    img: "/Images/55.jpg"
+    img: img4
   },
   {
     name: "Lightweight Wear",
     description: "Perfect for summer days and casual outings.",
-    img: "/Images/8.webp"
+    img: img5
   },
   {
     name: "Exclusive Collection",
     description: "Stand out with our limited edition collection.",
-    img: "/Images/img-0159-jpeg-648a310b60cf5.avif"
+    img: img6
   }
 ];
 
@@ -62,12 +68,12 @@ export function MarqueeDemo() {
       <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
         Meet the Smart Lint Remover — premium quality for flawless fabric care
       </p>
-      <Marquee pauseOnHover className="[--duration:20s]">
+      <Marquee className="[--duration:20s]">
         {firstRow.map((product) => (
           <ProductCard key={product.name} {...product} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s]">
+      <Marquee reverse className="[--duration:20s]">
         {secondRow.map((product) => (
           <ProductCard key={product.name} {...product} />
         ))}
