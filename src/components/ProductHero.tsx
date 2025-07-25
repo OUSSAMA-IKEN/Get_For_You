@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 import productImage from "@/assets/61Lpj9ipB-L._AC_UF1000_1000_QL80___1_-removebg-preview.png";
 
 interface ProductHeroProps {
   onOrderClick: () => void;
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const ProductHero = ({ onOrderClick }: ProductHeroProps) => {
-  const [quantity, setQuantity] = useState(1);
-
+const ProductHero = ({
+  onOrderClick,
+  quantity,
+  setQuantity
+}: ProductHeroProps) => {
   const handleQuantityChange = (increment: number) => {
     setQuantity((prev) => Math.max(1, prev + increment));
   };
@@ -96,7 +100,7 @@ const ProductHero = ({ onOrderClick }: ProductHeroProps) => {
               transition={{ delay: 0.8 }}
               className="text-4xl font-bold text-primary"
             >
-              150 DH
+              {quantity * 150} Dh
             </motion.div>
 
             {/* Quantity Selector */}

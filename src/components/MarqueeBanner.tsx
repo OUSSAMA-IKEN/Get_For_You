@@ -55,7 +55,7 @@ const ProductCard = ({ img }: { img: string }) => {
 
 export function MarqueeDemo() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden">
       <h2 className="text-4xl lg:text-5xl font-bold mb-4">
         Our <span className="text-primary">Product</span>
       </h2>

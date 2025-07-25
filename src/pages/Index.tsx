@@ -12,9 +12,10 @@ import "../App.css";
 
 const Index = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="min-h-screen  bg-backgroud text-foreground relative  ">
+    <div className="min-h-screen  bg-backgroud text-foreground relative overclass">
       {/* Background spots */}
       <div className="spot-1" />
       <div className="spot-2" />
@@ -23,8 +24,12 @@ const Index = () => {
       <Navbar />
 
       <main>
-        <section id="home">
-          <ProductHero onOrderClick={() => setIsOrderModalOpen(true)} />
+        <section id="home" className="pt-10">
+          <ProductHero
+            onOrderClick={() => setIsOrderModalOpen(true)}
+            quantity={quantity}
+            setQuantity={setQuantity}
+          />
         </section>
 
         <MarqueeDemo />
@@ -41,6 +46,7 @@ const Index = () => {
       <OrderModal
         isOpen={isOrderModalOpen}
         onClose={() => setIsOrderModalOpen(false)}
+        quantity={quantity}
       />
     </div>
   );

@@ -1,7 +1,8 @@
 #root {
   max-width: 1280px;
+  
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -51,3 +52,11 @@
     );
 }
 /* ------------ End gradient spot light */
+
+/*  .overclass overflow-x-hidden for <680px*/
+@media (max-width: 680px) {
+  .overclass {
+    overflow-x: hidden !important;
+    overflow: hidden !important;
+  }
+}

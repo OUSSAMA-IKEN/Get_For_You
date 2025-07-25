@@ -1,36 +1,36 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, CreditCard, Truck, Shield } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import { X, CreditCard, Truck, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
 interface OrderModalProps {
   isOpen: boolean;
   onClose: () => void;
+  quantity: number;
 }
 
-const OrderModal = ({ isOpen, onClose }: OrderModalProps) => {
+const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    postalCode: '',
-    quantity: 1
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    postalCode: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Ici vous pourriez traiter la commande
-    console.log('Commande soumise:', formData);
+    console.log("Commande soumise:", formData);
     onClose();
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
@@ -60,7 +60,9 @@ const OrderModal = ({ isOpen, onClose }: OrderModalProps) => {
             <div className="glass rounded-3xl p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold">Finaliser votre commande</h2>
+                <h2 className="text-2xl  font-bold">
+                  Finaliser votre commande
+                </h2>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -75,12 +77,19 @@ const OrderModal = ({ isOpen, onClose }: OrderModalProps) => {
               <div className="glass rounded-lg p-4 mb-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-semibold">SoundWave Pro</h3>
-                    <p className="text-sm text-muted-foreground">Écouteurs premium sans fil</p>
+                    <h3 className="font-semibold">Smart Lint Remover Pro</h3>
+                    <p className="text-sm text-muted-foreground">
+                      exceptional performance
+                    </p>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-primary">299€</div>
-                    <div className="text-sm text-muted-foreground">Quantité: {formData.quantity}</div>
+                    <div className="text-2xl font-bold text-primary">{`${Number(
+                      quantity * 150
+                    )} Dh`}</div>
+
+                    <div className="text-sm text-muted-foreground">
+                      Quantité: {quantity}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -91,19 +100,25 @@ const OrderModal = ({ isOpen, onClose }: OrderModalProps) => {
                   <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Truck className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="text-xs text-muted-foreground">Livraison 24h</div>
+                  <div className="text-xs text-muted-foreground">
+                    Livraison 24h
+                  </div>
                 </div>
                 <div className="text-center">
                   <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Shield className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="text-xs text-muted-foreground">Paiement sécurisé</div>
+                  <div className="text-xs text-muted-foreground">
+                    Paiement sécurisé
+                  </div>
                 </div>
                 <div className="text-center">
                   <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-2">
                     <CreditCard className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="text-xs text-muted-foreground">Garantie 2 ans</div>
+                  <div className="text-xs text-muted-foreground">
+                    Garantie 2 ans
+                  </div>
                 </div>
               </div>
 
@@ -205,15 +220,16 @@ const OrderModal = ({ isOpen, onClose }: OrderModalProps) => {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary transition-all duration-300 glow"
+                    className="w-full bg-gradient-to-r font-semibold from-primary to-accent hover:from-accent hover:to-primary transition-all duration-300 glow"
                   >
-                    Confirmer ma commande - 299€
+                    Confirmer ma commande - {`${quantity * 150} Dh`}
                   </Button>
                 </motion.div>
               </form>
 
               <p className="text-xs text-muted-foreground text-center mt-4">
-                En passant commande, vous acceptez nos conditions générales de vente.
+                En passant commande, vous acceptez nos conditions générales de
+                vente.
               </p>
             </div>
           </motion.div>
