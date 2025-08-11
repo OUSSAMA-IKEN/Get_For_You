@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
+import { useTranslationContext } from "@/contexts/i18n.context";
+
 const TestimonialsSection = () => {
   // const testimonials = [
   //   {
@@ -26,7 +28,7 @@ const TestimonialsSection = () => {
   //   }
   // ];
 
-  const testimonials = [
+  let testimonials = [
     {
       name: "Souad",
       role: "👩‍🦰 from Marrakech",
@@ -72,8 +74,40 @@ const TestimonialsSection = () => {
     }
   };
 
+  const [language, setLanguage, t] = useTranslationContext();
+
+  const Trsansletedtesimonials = [
+    {
+      name: "سعاد",
+      role: "👩‍🦰 من مراكش",
+      comment:
+        "المنتج أكثر من رائع! جعلني أعود لارتداء الملابس التي نسيتُها بسبب الوبر 💖",
+      rating: 5,
+      avatar: "S"
+    },
+    {
+      name: "ليلى",
+      role: "👩‍💼 من الدار البيضاء",
+      comment: "وصل في يومين فقط، والتوصيل كان مجانيًا! خدمة ممتازة 👏",
+      rating: 4,
+      avatar: "L"
+    },
+    {
+      name: "نادية",
+      role: "👩 من طنجة",
+      avatar: "N",
+      rating: 5,
+      comment:
+        "استخدمته على جاكيت قديم وبدا جديدًا مرة أخرى! أنصح به للجميع دون تردد ✅"
+    }
+  ];
+
+  if (language === "ar") {
+    testimonials = Trsansletedtesimonials;
+  }
+
   return (
-    <section id="reviews" className="py-20 relative">
+    <section  className="py-20 relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -82,11 +116,20 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          {language === "ar" && (
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <span className="text-primary"> تقيمات</span> العملاء
+            </h2>
+          )}
+          <h2
+            className={`text-4xl lg:text-5xl font-bold mb-6 ${
+              language === "ar" ? "hidden" : ""
+            }`}
+          >
             Customer <span className="text-primary">Testimonials</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of happy customers worldwide
+            {t("Join thousands of happy customers worldwide")}
           </p>
         </motion.div>
 
@@ -125,7 +168,7 @@ const TestimonialsSection = () => {
 
               {/* Comment */}
               <p className="text-foreground/90 mb-6 leading-relaxed">
-                "{testimonial.comment}"
+                "{t(testimonial.comment)}"
               </p>
 
               {/* User info */}
@@ -138,9 +181,9 @@ const TestimonialsSection = () => {
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <div className="font-semibold">{testimonial.name}</div>
+                  <div className="font-semibold">{t(testimonial.name)}</div>
                   <div className="text-sm text-muted-foreground">
-                    {testimonial.role}
+                    {t(testimonial.role)}
                   </div>
                 </div>
               </div>

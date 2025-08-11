@@ -7,15 +7,21 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import OrderModal from "@/components/OrderModal";
-
 import "../App.css";
+
+import { useTranslationContext } from "../contexts/i18n.context";
 
 const Index = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
+  const [language, setLanguage] = useTranslationContext();
+
   return (
-    <div className="min-h-screen  bg-backgroud text-foreground relative overclass">
+    <div
+      className="min-h-screen  bg-backgroud text-foreground relative overclass"
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
       {/* Background spots */}
       <div className="spot-1" />
       <div className="spot-2" />
@@ -36,7 +42,9 @@ const Index = () => {
 
         <ProductDescription />
 
-        <TestimonialsSection />
+        <section id="reviews" >
+          <TestimonialsSection />
+        </section>
 
         <FAQSection />
       </main>

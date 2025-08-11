@@ -11,6 +11,8 @@ import {
 
 import Log from "@/assets/logo.png";
 
+import { useTranslationContext } from "@/contexts/i18n.context";
+
 const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -21,9 +23,11 @@ const Footer = () => {
 
   const contactInfo = [
     { icon: Mail, text: "contact@soundwavepro.com" },
-    { icon: Phone, text: "+212 1234 5678" },
-    { icon: MapPin, text: "Casablanca, Morocco" }
+    { icon: Phone, text: "+212 767295014" },
+    { icon: MapPin, text: "Tanger, Morocco" }
   ];
+
+  const [language, setLanguage, t] = useTranslationContext();
 
   return (
     <footer
@@ -54,13 +58,13 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-md ">
-              Découvrez une nouvelle dimension sonore avec nos écouteurs
-              premium. Qualité, innovation et design pour une expérience audio
-              exceptionnelle.
+              {t(
+                "Découvrez une nouvelle dimension sonore avec nos écouteurs premium. Qualité, innovation et design pour une expérience audio exceptionnelle."
+              )}
             </p>
 
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex gap-2">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
@@ -83,12 +87,13 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="font-semibold text-lg mb-4">Contact</h3>
+            <h3 className="font-semibold text-lg mb-4">{t("Contact")}</h3>
             <div className="space-y-3">
               {contactInfo.map((info, index) => (
                 <div
                   key={index}
                   className="flex items-center space-x-3 text-muted-foreground"
+                  dir="ltr"
                 >
                   <info.icon className="h-4 w-4 text-primary" />
                   <span className="text-sm">{info.text}</span>
@@ -104,21 +109,21 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="font-semibold text-lg mb-4">Liens rapides</h3>
+            <h3 className="font-semibold text-lg mb-4">{t("Quick Links")}</h3>
             <div className="space-y-2">
               {[
-                { label: "Accueil", href: "#home" },
-                { label: "Produit", href: "#product" },
-                { label: "Avis clients", href: "#reviews" },
+                { label: "Home", href: "#home" },
+                { label: "Product", href: "#product" },
+                { label: "Reviews", href: "#reviews" },
                 { label: "FAQ", href: "#faq" },
-                { label: "Support", href: "#contact" }
+                { label: "Contact", href: "#contact" }
               ].map((link, index) => (
                 <a
                   key={index}
                   href={link.href}
                   className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
                 >
-                  {link.label}
+                  {t(link.label)}
                 </a>
               ))}
             </div>
@@ -134,26 +139,26 @@ const Footer = () => {
           className="border-t border-border/50 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-            © 2024 SoundWave Pro. Tous droits réservés.
+            {t("© 2025 Smart Lint Remover Pro. All rights reserved.")}
           </p>
-          <div className="flex space-x-6 text-sm">
+          <div className="flex space-x-6 text-sm gap-6">
             <a
               href="#"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              Politique de confidentialité
+              {t("Confidentiality Policy")}
             </a>
             <a
               href="#"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              Conditions d'utilisation
+              {t("Terms of Use")}
             </a>
             <a
               href="#"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              Mentions légales
+              {t("Legal Notices")}
             </a>
           </div>
         </motion.div>

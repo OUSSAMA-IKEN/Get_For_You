@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
-const ProductDescription = () => {
+import { useTranslationContext } from "@/contexts/i18n.context";
 
+const ProductDescription = () => {
   // const features = [
   //   "Audio haute résolution avec drivers de 40mm",
   //   "Réduction de bruit active adaptative",
@@ -13,7 +14,7 @@ const ProductDescription = () => {
   //   "Compatible avec tous les appareils",
   //   "Garantie 2 ans incluse"
   // ];
-  
+
   const features = [
     "🔋 Rechargeable , no batteries needed, just plug and use",
     "🧼 Easy to clean , removable tank cleans in seconds",
@@ -40,8 +41,9 @@ const ProductDescription = () => {
     visible: { opacity: 1, x: 0 }
   };
 
+  const [language, setLanguage, t] = useTranslationContext();
   return (
-    <section className="py-20 relative">
+    <section className="py-20 relative" id="features">
       <div className="spot-3" />
 
       <div className="container mx-auto px-4">
@@ -52,12 +54,25 @@ const ProductDescription = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Exclusive <span className="text-primary">Features</span>
+          {language === "ar" && (
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 " dir="rtl">
+              <span className="text-primary px-3">
+                {t("Exclusive Features")}
+              </span>
+            </h2>
+          )}
+          <h2
+            className={`text-4xl lg:text-5xl font-bold mb-6 ${
+              language === "ar" ? "hidden" : ""
+            }`}
+          >
+            Exclusive
+            <span className="text-primary px-3">Features</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Every detail has been carefully crafted to offer an exceptional
-            fabric care experience.
+            {t(
+              "Every detail has been carefully crafted to offer an exceptional fabric care experience."
+            )}
           </p>
         </motion.div>
 
@@ -78,7 +93,7 @@ const ProductDescription = () => {
                 <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                   <Check className="h-4 w-4 text-primary-foreground" />
                 </div>
-                <span className="text-lg">{feature}</span>
+                <span className="text-lg">{t(feature)}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -93,10 +108,12 @@ const ProductDescription = () => {
             <div className="glass rounded-3xl p-8 text-center">
               <div className="text-6xl font-bold text-primary mb-4">30h</div>
               <div className="text-xl font-semibold mb-2">
-                Continuous Operation
+                {t("Long-lasting Performance")}
               </div>
               <div className="text-muted-foreground">
-                Designed for long-lasting performance and reliable fabric care.{" "}
+                {t(
+                  "Designed for long-lasting performance and reliable fabric care."
+                )}
               </div>
             </div>
 

@@ -7,6 +7,8 @@ import img4 from "@/assets/images/55.jpg";
 import img5 from "@/assets/images/8.webp";
 import img6 from "@/assets/images/img-0159-jpeg-648a310b60cf5.avif";
 
+import { useTranslationContext } from "@/contexts/i18n.context";
+
 // Update: Product showcase cards using images from assets/images
 const products = [
   {
@@ -60,13 +62,23 @@ const ProductCard = ({ img }: { img: string }) => {
 };
 
 export function MarqueeDemo() {
+  const [language, setLanguage, t] = useTranslationContext();
+
   return (
-    <div className="relative flex flex-col items-center justify-center overflow-hidden">
+    <div
+      id="product"
+      className="relative flex flex-col items-center justify-center overflow-hidden"
+    >
       <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-        Our <span className="text-primary">Product</span>
+        {language === "en" ? "Our" : ""}{" "}
+        <span className="text-primary">
+          {language === "en" ? t("product") : t("Our Product")}
+        </span>
       </h2>
       <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-        Meet the Smart Lint Remover — premium quality for flawless fabric care
+        {t(
+          "Meet the Smart Lint Remover — premium quality for flawless fabric care"
+        )}
       </p>
       <Marquee className="[--duration:20s]">
         {firstRow.map((product) => (

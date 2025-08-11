@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 
+import { useTranslationContext } from "@/contexts/i18n.context";
+
 interface OrderModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -36,6 +38,8 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
     }));
   };
 
+  const [language, setLanguage, t] = useTranslationContext();
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -57,11 +61,11 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
             transition={{ type: "spring", duration: 0.5 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="glass rounded-3xl p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="glass rounded-3xl p-8 w-full max-w-2xl max-h-[91vh] overflow-y-hidden">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl  font-bold">
-                  Finaliser votre commande
+                  {t("Complete your order")}
                 </h2>
                 <Button
                   variant="ghost"
@@ -77,18 +81,22 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
               <div className="glass rounded-lg p-4 mb-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-semibold">Smart Lint Remover Pro</h3>
+                    <h3 className="font-semibold">
+                      {t("Smart Lint Remover Pro")}
+                    </h3>
                     <p className="text-sm text-muted-foreground">
-                      exceptional performance
+                      {t("exceptional performance")}
                     </p>
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-primary">{`${Number(
                       quantity * 150
-                    )} Dh`}</div>
+                    )}`}
+                    <span className="text-primary px-1">dh</span>
+                    </div>
 
                     <div className="text-sm text-muted-foreground">
-                      Quantité: {quantity}
+                      {t("Quantity")}: {quantity}
                     </div>
                   </div>
                 </div>
@@ -101,7 +109,8 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
                     <Truck className="h-6 w-6 text-primary" />
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Livraison 24h
+                    {t("Delivery 24h")}
+                    <p>{t("for free")}</p>
                   </div>
                 </div>
                 <div className="text-center">
@@ -109,7 +118,7 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
                     <Shield className="h-6 w-6 text-primary" />
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Paiement sécurisé
+                    {t("Cash on Delivery")}
                   </div>
                 </div>
                 <div className="text-center">
@@ -117,40 +126,27 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
                     <CreditCard className="h-6 w-6 text-primary" />
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Garantie 2 ans
+                    {t("1 month garantee")}
                   </div>
                 </div>
               </div>
 
               {/* Order Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="firstName">Prénom</Label>
-                    <Input
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="lastName">Nom</Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1"
-                    />
-                  </div>
+                <div>
+                  <Label htmlFor="lastName">{t("Username")}</Label>
+                  <Input
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                    className="mt-1"
+                  />
                 </div>
 
                 <div>
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{t("Email")}</Label>
                   <Input
                     id="email"
                     name="email"
@@ -163,7 +159,7 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
                 </div>
 
                 <div>
-                  <Label htmlFor="phone">Téléphone</Label>
+                  <Label htmlFor="phone">{t("Phone Number")}</Label>
                   <Input
                     id="phone"
                     name="phone"
@@ -176,7 +172,7 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
                 </div>
 
                 <div>
-                  <Label htmlFor="address">Adresse</Label>
+                  <Label htmlFor="address">{t("Address")}</Label>
                   <Input
                     id="address"
                     name="address"
@@ -187,24 +183,13 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="">
                   <div>
-                    <Label htmlFor="city">Ville</Label>
+                    <Label htmlFor="city">{t("City")}</Label>
                     <Input
                       id="city"
                       name="city"
                       value={formData.city}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="postalCode">Code postal</Label>
-                    <Input
-                      id="postalCode"
-                      name="postalCode"
-                      value={formData.postalCode}
                       onChange={handleInputChange}
                       required
                       className="mt-1"
@@ -222,14 +207,14 @@ const OrderModal = ({ isOpen, onClose, quantity }: OrderModalProps) => {
                     size="lg"
                     className="w-full bg-gradient-to-r font-semibold from-primary to-accent hover:from-accent hover:to-primary transition-all duration-300 glow"
                   >
-                    Confirmer ma commande - {`${quantity * 150} Dh`}
+                    {/* order confirmation */}
+                    {t("send order")} - {`${quantity * 150} Dh`}
                   </Button>
                 </motion.div>
               </form>
 
               <p className="text-xs text-muted-foreground text-center mt-4">
-                En passant commande, vous acceptez nos conditions générales de
-                vente.
+                {t("order confirmation")}
               </p>
             </div>
           </motion.div>

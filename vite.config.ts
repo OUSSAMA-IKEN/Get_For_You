@@ -9,7 +9,7 @@ const repoName = "/Get_For_You";
 export default defineConfig(({ mode }) => ({
   base: mode === "production" ? repoName : "/",
   build: {
-    outDir: 'dist',
+    outDir: "dist"
   },
   server: {
     host: "::",

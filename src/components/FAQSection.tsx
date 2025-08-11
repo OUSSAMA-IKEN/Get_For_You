@@ -2,8 +2,12 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
+import { useTranslationContext } from "@/contexts/i18n.context";
+
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const [language, setLanguage, t] = useTranslationContext();
 
   // const faqs = [
   //   {
@@ -38,7 +42,7 @@ const FAQSection = () => {
   //   }
   // ];
 
-  const faqs = [
+  let faqs = [
     {
       question: "Is the device suitable for all fabric types?",
       answer:
@@ -66,6 +70,36 @@ const FAQSection = () => {
     }
   ];
 
+  const translatedFaqs = [
+    {
+      question: "هل الجهاز مناسب لجميع أنواع الأقمشة؟",
+      answer:
+        "نعم، تم تصميم الجهاز ليكون لطيفًا وآمنًا على الأقمشة الحساسة مثل الصوف والقطن والحرير."
+    },
+    {
+      question: "كم من الوقت يستغرق شحن الجهاز بالكامل؟",
+      answer:
+        "حوالي ساعتين إلى ثلاث ساعات للحصول على شحن كامل يكفي للاستخدامات المتعددة."
+    },
+    {
+      question: "هل هناك ضمان على المنتج؟",
+      answer: "نعم، نقدم ضمانًا لمدة شهر واحد ضد عيوب التصنيع."
+    },
+    {
+      question: "هل يمكنني إرجاع أو استبدال المنتج؟",
+      answer:
+        "بالطبع، يمكنك استبداله أو إرجاعه خلال 5 أيام من الاستلام في حال وجود عيب في التصنيع."
+    },
+    {
+      question: "هل يمكنني الدفع عند الاستلام؟",
+      answer: "نعم، نوفر خدمة الدفع عند الاستلام لتسوق آمن وسريع."
+    }
+  ];
+
+  if (language === "ar") {
+    faqs = translatedFaqs;
+  }
+
   return (
     <section id="faq" className="py-20 relative">
       <div className="spot-2" />
@@ -79,11 +113,18 @@ const FAQSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            <span> Frequently Asked </span>
-            <span className="text-primary">Questions</span>
+            {language === "ar" ? (
+              <span className="text-primary"> {t("Questions")}</span>
+            ) : (
+              <div>
+                <span> Frequently Asked </span>
+                <span className="text-primary">{t("Questions")}</span>
+              </div>
+            )}
+            {/* <span className="text-primary">{t("Questions")}</span> */}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to know, in one place
+            {t("Everything you need to know, in one place")}
           </p>
         </motion.div>
 
